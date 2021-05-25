@@ -1,0 +1,1 @@
+interface IValueObserver {public fun update(value : Double)}
