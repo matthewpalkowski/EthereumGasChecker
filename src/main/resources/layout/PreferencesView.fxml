@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label id="lblPreferences" fx:id="lblPreferences" layoutX="84.0" layoutY="5.0" text="Preferences">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="103.0" layoutY="60.0" text="Gas Threshold:" textAlignment="RIGHT" underline="true" />
+      <TextField id="txtGas" fx:id="txtGas" layoutX="190.0" layoutY="57.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="75.0" />
+      <Label id="lblFrequency" fx:id="lblFrequency" alignment="CENTER_RIGHT" layoutX="43.0" layoutY="110.0" text="Scan Frequency (seconds):" textAlignment="RIGHT" underline="true" />
+      <TextField id="txtDuration" fx:id="txtDuration" layoutX="190.0" layoutY="157.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="75.0" />
+      <Label id="lblDuration" fx:id="lblDuration" layoutX="18.0" layoutY="160.0" text="Duration Threshhold (seconds):" underline="true" />
+      <TextField id="txtFrequency" fx:id="txtFrequency" layoutX="190.0" layoutY="107.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="75.0" />
+      <Button id="btnAccept" fx:id="btnAccept" layoutX="175.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="Accept" />
+      <Button id="btnCancel" fx:id="btnCancel" layoutX="50.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="Cancel" />
+   </children>
+</AnchorPane>

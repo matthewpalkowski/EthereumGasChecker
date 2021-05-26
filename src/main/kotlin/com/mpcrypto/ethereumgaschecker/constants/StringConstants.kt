@@ -1,5 +1,6 @@
 package com.mpcrypto.ethereumgaschecker.constants
 
+//TODO Move to resources package & change below references to a getResource call
 class StringConstants {
     companion object{
         //API constants derived from the Etherscan.Etherscan API (https://etherscan.io/apis#proxy)
@@ -18,5 +19,6 @@ class StringConstants {
 
         //Filepaths
         const val PREFERENCE_FILE =  "UserPreferences.json"
+        const val MAIN_FXML = "/layout/MainView.fxml"
     }
 }
