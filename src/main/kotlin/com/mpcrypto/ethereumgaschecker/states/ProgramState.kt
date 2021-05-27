@@ -1,6 +1,5 @@
 package com.mpcrypto.ethereumgaschecker.states
 
-import javafx.beans.property.SimpleStringProperty
 import javafx.scene.control.Button
 
 abstract class ProgramState {

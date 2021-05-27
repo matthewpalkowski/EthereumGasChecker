@@ -1,6 +1,5 @@
-package com.mpcrypto.ethereumgaschecker.constants
+package constants
 
-//TODO Move to resources package & change below references to a getResource call
 class StringConstants {
     companion object{
         //API constants derived from the Etherscan.Etherscan API (https://etherscan.io/apis#proxy)
@@ -20,7 +19,7 @@ class StringConstants {
 
         //GUI Component IDs
         const val BUTTON_ACCEPT_ID = "btnAccept"
-        const val CANCEL_BUTTON_ID = "btnCancel"
+        const val BUTTON_CANCEL_ID = "btnCancel"
         const val BUTTON_SCAN_ID = "btnGasScanning"
         const val BUTTON_SET_PREFERENCES_ID = "btnSetPreferences"
         const val LABEL_PRICE_ID = "lblCurrentPrice"

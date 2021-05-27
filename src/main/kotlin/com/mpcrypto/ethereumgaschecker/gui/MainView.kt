@@ -1,6 +1,6 @@
 package com.mpcrypto.ethereumgaschecker.gui
 
-import com.mpcrypto.ethereumgaschecker.constants.StringConstants
+import constants.StringConstants
 import com.mpcrypto.ethereumgaschecker.states.*
 import javafx.scene.control.*
 import javafx.scene.layout.AnchorPane

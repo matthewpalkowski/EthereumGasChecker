@@ -1,6 +1,5 @@
-package com.mpcrypto.ethereumgaschecker.constants
+package constants
 
-//TODO Move to resources package & change below references to a getResource call
 class NumericalConstants {
     companion object{
         const val MAIN_WIDTH = 315.0

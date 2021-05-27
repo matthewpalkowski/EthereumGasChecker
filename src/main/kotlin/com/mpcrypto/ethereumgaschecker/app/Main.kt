@@ -1,13 +1,15 @@
 package com.mpcrypto.ethereumgaschecker.app
 
-import com.mpcrypto.ethereumgaschecker.constants.NumericalConstants
+import com.mpcrypto.ethereumgaschecker.fileio.PreferencesManager
+import constants.NumericalConstants
 import com.mpcrypto.ethereumgaschecker.gui.MainView
 import javafx.stage.Stage
 import tornadofx.App
 
+//TODO ADD JAVADOCS
 class  Main: App(MainView::class){
     override fun start(stage: Stage) {
-        stage.isResizable = false
+         stage.isResizable = false
         stage.height= NumericalConstants.MAIN_HEIGHT
         stage.width = NumericalConstants.MAIN_WIDTH
         super.start(stage)
