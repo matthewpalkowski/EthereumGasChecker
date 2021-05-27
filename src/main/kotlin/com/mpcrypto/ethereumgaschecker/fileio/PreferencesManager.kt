@@ -20,13 +20,13 @@ class PreferencesManager {
     fun getPreferences(){
         val gson = Gson()
         //TODO manage io exceptions
-        val reader = Files.newBufferedReader(Paths.get(StringConstants.PREFERENCE_FILE))
+        val reader = Files.newBufferedReader(Paths.get(StringConstants.PATH_PREFERENCES))
         currentPreferences = gson.fromJson(reader,Preferences::class.java)
     }
 
     fun updatePreferences(){
         val gson = Gson()
         //TODO manage io exceptions
-        gson.toJson(currentPreferences, FileWriter(StringConstants.PREFERENCE_FILE))
+        gson.toJson(currentPreferences, FileWriter(StringConstants.PATH_PREFERENCES))
     }
 }

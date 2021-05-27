@@ -1,4 +1,4 @@
-package etherscanapi
+package com.mpcrypto.ethereumgaschecker.etherscanapi
 
 import com.mpcrypto.ethereumgaschecker.constants.ApiKeys
 import com.mpcrypto.ethereumgaschecker.constants.StringConstants

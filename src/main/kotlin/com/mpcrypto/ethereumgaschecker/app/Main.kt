@@ -1,7 +1,7 @@
 package com.mpcrypto.ethereumgaschecker.app
 
 import com.mpcrypto.ethereumgaschecker.constants.NumericalConstants
-import com.mpcrypto.ethereumgaschecker.gui.views.MainView
+import com.mpcrypto.ethereumgaschecker.gui.MainView
 import javafx.stage.Stage
 import tornadofx.App
 

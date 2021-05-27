@@ -4,9 +4,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="lblTitle" fx:id="lblTitle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane
+        id="MainViewPane"
+        fx:id="MainViewPane"
+        maxHeight="-Infinity"
+        maxWidth="-Infinity"
+        minHeight="-Infinity"
+        minWidth="-Infinity"
+        prefHeight="230.0"
+        prefWidth="300.0"
+        xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
    <children>
-      <Label layoutX="24.5" layoutY="10.0" text="Ethereum Gas Checker">
+      <Label id="lblTitle" fx:id="lblTitle" layoutX="24.5" layoutY="10.0" text="Ethereum Gas Checker">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

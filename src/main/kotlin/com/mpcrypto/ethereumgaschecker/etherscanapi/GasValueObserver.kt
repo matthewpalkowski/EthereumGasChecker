@@ -1,7 +1,7 @@
-package etherscanapi
+package com.mpcrypto.ethereumgaschecker.etherscanapi
 
 import IValueObserver
-import notification.Notification
+import com.mpcrypto.ethereumgaschecker.notification.Notification
 
 class GasValueObserver(private val notification: Notification) : IValueObserver {
 

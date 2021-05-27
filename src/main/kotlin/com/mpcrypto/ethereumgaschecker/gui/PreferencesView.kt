@@ -1,4 +1,4 @@
-package com.mpcrypto.ethereumgaschecker.gui.views
+package com.mpcrypto.ethereumgaschecker.gui
 
 import javafx.scene.layout.AnchorPane
 import tornadofx.*

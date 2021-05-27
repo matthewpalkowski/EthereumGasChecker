@@ -8,17 +8,28 @@ class StringConstants {
         const val ETHERSCAN_BASE_URL: String = "https://api.etherscan.io/api"
         const val ETHERSCAN_GAS_MODULE: String = "proxy"
 
-        //Other application constants
+        //GUI Display Text
         const val APPLICATION_NAME = "Ethereum Gas Checker"
-        const val SET_PREFERENCES_BUTTON = "Set Preferences"
-        const val GAS_THRESHOLD_LABEL = "Gas threshold"
-        const val SCAN_FREQUENCY_LABEL = "Gas price scan frequency (seconds)"
-        const val DURATION_THRESHOLD_LABEL = "Duration threshold"
-        const val START_BUTTON = "Scan gas prices"
-        const val STOP_BUTTON = "Stop"
+        const val BUTTON_SCAN_TEXT_START = "Scan gas prices"
+        const val BUTTON_SCAN_TEXT_STOP = "Stop"
+        const val BUTTON_SET_PREFERENCES_TEXT = "Set Preferences"
+        const val LABEL_DURATION_THRESHOLD_TEXT = "Duration threshold"
+        const val LABEL_GAS_THRESHOLD_TEXT = "Gas threshold"
+        const val LABEL_PRICE_DEFAULT_TEXT = "UNK"
+        const val LABEL_SCAN_FREQUENCY_TEXT = "Gas price scan frequency (seconds)"
+
+        //GUI Component IDs
+        const val BUTTON_ACCEPT_ID = "btnAccept"
+        const val CANCEL_BUTTON_ID = "btnCancel"
+        const val BUTTON_SCAN_ID = "btnGasScanning"
+        const val BUTTON_SET_PREFERENCES_ID = "btnSetPreferences"
+        const val LABEL_PRICE_ID = "lblCurrentPrice"
+        const val TEXTFIELD_DURATION_THRESHOLD = "txtDuration"
+        const val TEXTFIELD_GAS_THRESHOLD = "txtGas"
+        const val TEXTFIELD_SCAN_FREQUENCY = "txtFrequency"
 
         //Filepaths
-        const val PREFERENCE_FILE =  "UserPreferences.json"
-        const val MAIN_FXML = "/layout/MainView.fxml"
+        const val PATH_PREFERENCES =  "UserPreferences.json"
+        const val PATH_MAIN_FXML = "/layout/MainView.fxml"
     }
 }
