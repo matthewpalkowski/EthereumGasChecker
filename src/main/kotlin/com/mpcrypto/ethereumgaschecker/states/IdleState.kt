@@ -1,6 +1,6 @@
 package com.mpcrypto.ethereumgaschecker.states
 
-import constants.StringConstants
+import com.mpcrypto.ethereumgaschecker.constants.StringConstants
 import javafx.scene.control.Button
 
 class IdleState : ProgramState() {

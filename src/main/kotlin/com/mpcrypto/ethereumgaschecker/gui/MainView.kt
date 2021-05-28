@@ -1,6 +1,6 @@
 package com.mpcrypto.ethereumgaschecker.gui
 
-import constants.StringConstants
+import com.mpcrypto.ethereumgaschecker.constants.StringConstants
 import com.mpcrypto.ethereumgaschecker.states.*
 import javafx.scene.control.*
 import javafx.scene.layout.AnchorPane
@@ -29,7 +29,10 @@ class MainView : View(StringConstants.APPLICATION_NAME) {
             }
         }
         btnGasScanning.setOnMouseClicked {currentState.setButtonText(btnGasScanning)}
-        btnSetPreferences.setOnMouseClicked { currentState.manageUserPreferences()}
+        btnSetPreferences.setOnMouseClicked {
+            currentState.manageUserPreferences()
+            replaceWith<PreferencesView>()
+        }
     }
 
     private fun changeState(){

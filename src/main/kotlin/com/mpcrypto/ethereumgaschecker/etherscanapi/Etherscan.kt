@@ -1,9 +1,9 @@
 package com.mpcrypto.ethereumgaschecker.etherscanapi
 
-import constants.ApiKeys
-import constants.StringConstants
+import com.mpcrypto.ethereumgaschecker.constants.ApiKeys
 import GasPriceReturn
 import ValueObservable
+import com.mpcrypto.ethereumgaschecker.constants.StringConstants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Call

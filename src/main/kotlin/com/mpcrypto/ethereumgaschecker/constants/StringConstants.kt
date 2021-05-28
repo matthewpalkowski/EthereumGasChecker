@@ -1,4 +1,4 @@
-package constants
+package com.mpcrypto.ethereumgaschecker.constants
 
 class StringConstants {
     companion object{
@@ -6,11 +6,16 @@ class StringConstants {
         const val ETHERSCAN_ACTION: String = "eth_gasPrice"
         const val ETHERSCAN_BASE_URL: String = "https://api.etherscan.io/api"
         const val ETHERSCAN_GAS_MODULE: String = "proxy"
+        const val ETHERSCAN_KEY_ACTION: String = "action"
+        const val ETHERSCAN_KEY_MODULE: String = "module"
+        const val ETHERSCAN_KEY_APIKEY: String = "apikey"
 
         //GUI Display Text
         const val APPLICATION_NAME = "Ethereum Gas Checker"
         const val BUTTON_SCAN_TEXT_START = "Scan gas prices"
         const val BUTTON_SCAN_TEXT_STOP = "Stop"
+
+        //TODO consider removing values since they are specified in FXML file manually
         const val BUTTON_SET_PREFERENCES_TEXT = "Set Preferences"
         const val LABEL_DURATION_THRESHOLD_TEXT = "Duration threshold"
         const val LABEL_GAS_THRESHOLD_TEXT = "Gas threshold"
@@ -28,7 +33,8 @@ class StringConstants {
         const val TEXTFIELD_SCAN_FREQUENCY = "txtFrequency"
 
         //Filepaths
-        const val PATH_PREFERENCES =  "UserPreferences.json"
+        const val PATH_PREFERENCES =  "values/UserPreferences.json"
         const val PATH_MAIN_FXML = "/layout/MainView.fxml"
+        const val PATH_PREFERENCES_FXML = "/layout/PreferencesView.fxml"
     }
 }

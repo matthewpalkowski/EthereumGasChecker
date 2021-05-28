@@ -1,15 +1,15 @@
 package com.mpcrypto.ethereumgaschecker.etherscanapi
 
 import GasPriceReturn
+import com.mpcrypto.ethereumgaschecker.constants.StringConstants
 import retrofit2.Call
 import retrofit2.http.*
 
-//TODO change below strings to constants
 interface IEtherscanAPICalls {
-    @GET(".")
+    @GET(".") //TODO check if the "." can get removed
     fun getGasPrice(
-        @Query("module") module: String,
-        @Query("action") action: String,
-        @Query("apikey") key: String)
+        @Query(StringConstants.ETHERSCAN_KEY_MODULE) module: String,
+        @Query(StringConstants.ETHERSCAN_KEY_ACTION) action: String,
+        @Query(StringConstants.ETHERSCAN_KEY_APIKEY) key: String)
         : Call<GasPriceReturn>
 }

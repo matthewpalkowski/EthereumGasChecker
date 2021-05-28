@@ -1,8 +1,10 @@
 package com.mpcrypto.ethereumgaschecker.fileio
 
 import com.google.gson.Gson
-import constants.StringConstants
-import java.io.FileWriter
+import com.mpcrypto.ethereumgaschecker.constants.StringConstants
+import jdk.nashorn.internal.parser.JSONParser
+import java.io.*
+import java.lang.StringBuilder
 import java.nio.file.Files
 import java.nio.file.Paths
 
@@ -11,20 +13,22 @@ import java.nio.file.Paths
  */
 object PreferencesManager {
 
-    private lateinit var currentPreferences : Preferences
+    private var currentPreferences : Preferences? = null
 
     fun getPreferences() : Preferences{
         if (currentPreferences == null) {
             //TODO manage io exceptions
+            val file = this::class.java.classLoader.getResource(StringConstants.PATH_PREFERENCES).file
+            val fileReader = FileReader(file)
             val gson = Gson()
-            val reader = Files.newBufferedReader(Paths.get(StringConstants.PATH_PREFERENCES))
-            currentPreferences = gson.fromJson(reader, Preferences::class.java)
+            currentPreferences = gson.fromJson(fileReader, Preferences::class.java)
         }
-        return currentPreferences
+        return currentPreferences!!
     }
 
     fun updatePreferences(){
         val gson = Gson()
+        //FIXME Have to build the filepath correctly
         //TODO manage io exceptions
         gson.toJson(currentPreferences, FileWriter(StringConstants.PATH_PREFERENCES))
     }

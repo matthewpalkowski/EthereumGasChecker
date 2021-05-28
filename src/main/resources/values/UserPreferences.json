@@ -1,0 +1,5 @@
+{
+    "gasThreshold" : 50.00,
+    "scanFrequency" : 30,
+    "durationThreshold" : 60
+}

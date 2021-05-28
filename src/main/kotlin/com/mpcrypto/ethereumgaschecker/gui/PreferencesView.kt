@@ -1,7 +1,7 @@
 package com.mpcrypto.ethereumgaschecker.gui
 
+import com.mpcrypto.ethereumgaschecker.constants.StringConstants
 import com.mpcrypto.ethereumgaschecker.fileio.*
-import constants.StringConstants
 import javafx.scene.control.Button
 import javafx.scene.control.TextField
 import javafx.scene.layout.AnchorPane
@@ -12,7 +12,7 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
     //TODO Limit inputs for text fields
 
     //FXML Variables
-    override val root: AnchorPane by fxml()
+    override val root: AnchorPane by fxml(StringConstants.PATH_PREFERENCES_FXML)
     private lateinit var btnAccept : Button
     private lateinit var btnCancel : Button
     private lateinit var txtDurationThreshold : TextField
@@ -28,8 +28,9 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
                 StringConstants.TEXTFIELD_GAS_THRESHOLD -> {txtGasThreshold = child as TextField}
                 StringConstants.TEXTFIELD_SCAN_FREQUENCY -> {txtScanFrequency = child as TextField}
             }
-            populateValues()
         }
+
+        populateValues()
 
         btnAccept.setOnMouseClicked {
             updatePreferences()
@@ -49,7 +50,7 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
     }
 
     private fun returnToMainView(){
-        //TODO Implement
+        replaceWith<MainView>()
     }
 
     private fun updatePreferences(){
