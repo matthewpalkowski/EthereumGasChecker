@@ -15,6 +15,9 @@ class  Main: App(MainView::class){
     }
 }
 
+//FIXME - Consider abstract factory patterns to fix reduce dependencies
+//FIXME - Add custom app icon for the task bar and in the system tray for notifications
+
 /*TODO
  *  -Address the issue of distributing an API key
  *      -Have to have multiple keys from Etherscan//Get a pro-license
@@ -37,13 +40,3 @@ class  Main: App(MainView::class){
 *           -Brings up another window with preferences
 *               -values are updated when user enters and applies
 * */
-
-//TODO Check the operating system of the user, set notification type accordingly
-
-/*TODO add the below code to a "Main" thread
-            val notification = Windows10Notification()
-            val observer = GasValueObserver(notification)
-            val ether = Etherscan()
-            ether.attachObserver(observer)
-            ether.queryGas()
-*/

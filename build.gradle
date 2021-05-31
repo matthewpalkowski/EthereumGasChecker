@@ -30,8 +30,10 @@ repositories {
 }
 
 dependencies {
-    //Kotlin
+    //Kotlin - Standard
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    testCompile "org.junit.jupiter:junit-jupiter-api:$junit_version"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:$junit_version"
 
     //TornadoFX
     compile "no.tornado:tornadofx:$tornadofx_version"
@@ -40,9 +42,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
-    //Testing - JUnit
-    testCompile "org.junit.jupiter:junit-jupiter-api:$junit_version"
-    testRuntime "org.junit.jupiter:junit-jupiter-engine:$junit_version"
+    //Notifications
+    implementation 'fr.jcgay.send-notification:send-notification:0.16.0'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
 }
 
 mainClassName = "com.mpcrypto.ethereumgaschecker.app.Main"

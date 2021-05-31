@@ -10,6 +10,7 @@ import tornadofx.*
 class PreferencesView : View(StringConstants.APPLICATION_NAME) {
 
     //TODO Limit inputs for text fields
+    //TODO Depending on how threading turns out, may need to pass in currentState
 
     //FXML Variables
     override val root: AnchorPane by fxml(StringConstants.PATH_PREFERENCES_FXML)
@@ -54,6 +55,11 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
     }
 
     private fun updatePreferences(){
-
+        val prefs = PreferencesManager.getPreferences()
+        //TODO - Have to validate that inputs are valid
+        prefs.durationThreshold = txtDurationThreshold.text.toInt()
+        prefs.gasThreshold = txtGasThreshold.text.toDouble()
+        prefs.scanFrequency = txtScanFrequency.text.toInt()
+        PreferencesManager.updatePreferences()
     }
 }

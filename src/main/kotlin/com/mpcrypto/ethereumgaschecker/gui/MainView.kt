@@ -15,9 +15,9 @@ class MainView : View(StringConstants.APPLICATION_NAME) {
     private lateinit var btnSetPreferences : Button
 
     //State Variables
-    private var currentState : ProgramState
+    private var activeState : IProgramState
+    private var currentState : IProgramState
     private val idleState = IdleState()
-    private val activeState = ActiveState()
 
     init {
         currentState = idleState
@@ -28,11 +28,13 @@ class MainView : View(StringConstants.APPLICATION_NAME) {
                 StringConstants.LABEL_PRICE_ID -> lblCurrentPrice = child as Label
             }
         }
-        btnGasScanning.setOnMouseClicked {currentState.setButtonText(btnGasScanning)}
-        btnSetPreferences.setOnMouseClicked {
-            currentState.manageUserPreferences()
-            replaceWith<PreferencesView>()
+        btnGasScanning.setOnMouseClicked {
+            changeState()
+            currentState.setButtonText(btnGasScanning)
+            currentState.managePriceScanning()
         }
+        btnSetPreferences.setOnMouseClicked {replaceWith<PreferencesView>()}
+        activeState = ActiveState()
     }
 
     private fun changeState(){

@@ -1,21 +1,17 @@
-package com.mpcrypto.ethereumgaschecker.etherscanapi
+package com.mpcrypto.ethereumgaschecker.gasscanner.etherscan
 
-import com.mpcrypto.ethereumgaschecker.constants.ApiKeys
 import GasPriceReturn
-import ValueObservable
-import com.mpcrypto.ethereumgaschecker.constants.StringConstants
-import retrofit2.Retrofit
+import com.mpcrypto.ethereumgaschecker.constants.*
+import com.mpcrypto.ethereumgaschecker.gasscanner.GasScanner
+import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class Etherscan : ValueObservable() {
+class EtherscanScanner : GasScanner() {
 
     private lateinit var etherscanRequest: IEtherscanAPICalls
     private lateinit var retrofitEtherscan: Retrofit
 
-    fun queryGas(){
+    override fun queryGas(){
         retrofitEtherscan = Retrofit.Builder()
             .baseUrl(StringConstants.ETHERSCAN_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

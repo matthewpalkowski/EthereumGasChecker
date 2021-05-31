@@ -1,4 +1,4 @@
-package com.mpcrypto.ethereumgaschecker.etherscanapi
+package com.mpcrypto.ethereumgaschecker.gasscanner.etherscan
 
 import GasPriceReturn
 import com.mpcrypto.ethereumgaschecker.constants.StringConstants

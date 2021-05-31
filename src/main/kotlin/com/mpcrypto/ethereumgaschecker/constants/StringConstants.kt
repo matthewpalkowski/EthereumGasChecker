@@ -14,12 +14,12 @@ class StringConstants {
         const val APPLICATION_NAME = "Ethereum Gas Checker"
         const val BUTTON_SCAN_TEXT_START = "Scan gas prices"
         const val BUTTON_SCAN_TEXT_STOP = "Stop"
+        const val LABEL_PRICE_DEFAULT_TEXT = "UNK"
 
         //TODO consider removing values since they are specified in FXML file manually
         const val BUTTON_SET_PREFERENCES_TEXT = "Set Preferences"
         const val LABEL_DURATION_THRESHOLD_TEXT = "Duration threshold"
         const val LABEL_GAS_THRESHOLD_TEXT = "Gas threshold"
-        const val LABEL_PRICE_DEFAULT_TEXT = "UNK"
         const val LABEL_SCAN_FREQUENCY_TEXT = "Gas price scan frequency (seconds)"
 
         //GUI Component IDs
@@ -33,8 +33,12 @@ class StringConstants {
         const val TEXTFIELD_SCAN_FREQUENCY = "txtFrequency"
 
         //Filepaths
-        const val PATH_PREFERENCES =  "values/UserPreferences.json"
+        const val PATH_ICON = "drawable/AppIcon.png"
         const val PATH_MAIN_FXML = "/layout/MainView.fxml"
+        const val PATH_PREFERENCES =  "values/UserPreferences.json"
         const val PATH_PREFERENCES_FXML = "/layout/PreferencesView.fxml"
+
+        //Notification Strings
+        const val ID_ICON = "App_Icon"
     }
 }
