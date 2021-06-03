@@ -1,18 +1,13 @@
 package com.mpcrypto.ethereumgaschecker.states.programstates
 
 import com.mpcrypto.ethereumgaschecker.constants.StringConstants
-import com.mpcrypto.ethereumgaschecker.fileio.PreferencesManager
 import com.mpcrypto.ethereumgaschecker.gasscanner.*
 import com.mpcrypto.ethereumgaschecker.gasscanner.etherscan.*
+import com.mpcrypto.ethereumgaschecker.observerutils.IValueObserver
 import com.mpcrypto.ethereumgaschecker.states.valuethresholdstates.*
 import javafx.scene.control.Button
 
-class ActiveState() : IProgramState, GasValueObserver(){
-
-    /*TODO
-    *   -Observe when preferences change
-    *   -Make sure that values are sent with time stamps
-    * */
+class ActiveState() : IProgramState, IValueObserver {
 
     private val aboveState : IGasThresholdState = AboveThresholdState()
     private val belowState : IGasThresholdState = BelowThresholdState()
@@ -38,12 +33,5 @@ class ActiveState() : IProgramState, GasValueObserver(){
             currentGasState.notifyUser()
             changeState()
         }
-        //Append value to running list (list should be as long as maximum allowable time steps * min query
-        //Start from the most recent item, check that its value is above//below the threshold, store the first timestamp
-        //Repeat going back through the list until one of the following conditions is met:
-        //  -a disqualifying value is found,
-        //  -the timestamp is beyond the duration threshold is found
-        //      -Then notify user and change state
-        //  -End of the list encountered
     }
 }
