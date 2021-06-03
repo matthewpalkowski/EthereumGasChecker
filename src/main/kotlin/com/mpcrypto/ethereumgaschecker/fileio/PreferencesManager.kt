@@ -2,11 +2,7 @@ package com.mpcrypto.ethereumgaschecker.fileio
 
 import com.google.gson.Gson
 import com.mpcrypto.ethereumgaschecker.constants.StringConstants
-import jdk.nashorn.internal.parser.JSONParser
 import java.io.*
-import java.lang.StringBuilder
-import java.nio.file.Files
-import java.nio.file.Paths
 
 /**
  * Singleton to manage file I/O to maintain persistent user preferences.
@@ -14,6 +10,10 @@ import java.nio.file.Paths
 object PreferencesManager {
 
     private var currentPreferences : Preferences? = null
+
+    fun getDurationThresholdMillis() : Long{
+        return currentPreferences!!.durationThreshold.toLong() * 1000
+    }
 
     fun getPreferences() : Preferences{
         if (currentPreferences == null) {

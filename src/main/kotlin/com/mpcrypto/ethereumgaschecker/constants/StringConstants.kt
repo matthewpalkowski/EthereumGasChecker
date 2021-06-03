@@ -38,6 +38,10 @@ class StringConstants {
         const val PATH_PREFERENCES =  "values/UserPreferences.json"
         const val PATH_PREFERENCES_FXML = "/layout/PreferencesView.fxml"
 
+        //Notification Messages
+        const val MESSAGE_ABOVE_THRESHOLD = "Ethereum gas prices have risen above threshold"
+        const val MESSAGE_BELOW_THRESHOLD = "Ethereum gas prices have fallen below threshold"
+
         //Notification Strings
         const val ID_ICON = "App_Icon"
     }

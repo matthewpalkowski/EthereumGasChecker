@@ -1,4 +1,4 @@
-package com.mpcrypto.ethereumgaschecker.states
+package com.mpcrypto.ethereumgaschecker.states.programstates
 
 import com.mpcrypto.ethereumgaschecker.constants.StringConstants
 import javafx.scene.control.Button

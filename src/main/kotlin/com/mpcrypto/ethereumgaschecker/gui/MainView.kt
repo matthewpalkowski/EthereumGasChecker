@@ -1,7 +1,9 @@
 package com.mpcrypto.ethereumgaschecker.gui
 
 import com.mpcrypto.ethereumgaschecker.constants.StringConstants
-import com.mpcrypto.ethereumgaschecker.states.*
+import com.mpcrypto.ethereumgaschecker.states.programstates.ActiveState
+import com.mpcrypto.ethereumgaschecker.states.programstates.IProgramState
+import com.mpcrypto.ethereumgaschecker.states.programstates.IdleState
 import javafx.scene.control.*
 import javafx.scene.layout.AnchorPane
 import tornadofx.*

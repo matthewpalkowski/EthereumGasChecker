@@ -1,1 +1,3 @@
-interface IValueObserver {public fun update(value : Double)}
+package com.mpcrypto.ethereumgaschecker.observerutils
+
+interface IValueObserver {fun update(value : Double)}

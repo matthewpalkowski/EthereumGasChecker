@@ -25,6 +25,7 @@ class EtherscanScanner : GasScanner() {
             ApiKeys.ETHERSCAN_API_KEY)
             .enqueue(object : Callback<GasPriceReturn>{
                 override fun onResponse(call: Call<GasPriceReturn>, response: Response<GasPriceReturn>) {
+                    //FIXME probably should check response codes instead of just checking for a null body
                     if(response.body() == null) {
                         print(response.code()) //TODO FIGURE OUT WARNING MECHANISMS
                     }
