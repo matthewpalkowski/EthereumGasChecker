@@ -6,8 +6,11 @@ import com.mpcrypto.ethereumgaschecker.gasscanner.etherscan.*
 import com.mpcrypto.ethereumgaschecker.observerutils.IValueObserver
 import com.mpcrypto.ethereumgaschecker.states.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.Job
 
+/**
+ * Class to manage gas price scanning and to trigger notifications to the user when conditions specified by the user
+ * in preferences are met.
+ */
 class ScannerManager() : IValueObserver {
 
     //TODO add labels
@@ -16,7 +19,7 @@ class ScannerManager() : IValueObserver {
     private val scanner = EtherscanScanner() //TODO abstract as required if it can be generalized to other forms of scanners
     private val threadScope = CoroutineScope(CoroutineName(StringConstants.SCANNING_THREAD))
 
-    private var currentGasState : IGasThresholdState = belowState
+    private var currentGasState : GasThresholdState = belowState
     private var scanningThread : Job? = null
 
     private fun changeState(){

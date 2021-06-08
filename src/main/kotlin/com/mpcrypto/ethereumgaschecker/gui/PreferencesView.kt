@@ -1,16 +1,18 @@
 package com.mpcrypto.ethereumgaschecker.gui
 
-import com.mpcrypto.ethereumgaschecker.constants.StringConstants
+import com.mpcrypto.ethereumgaschecker.constants.*
 import com.mpcrypto.ethereumgaschecker.fileio.*
 import javafx.scene.control.Button
 import javafx.scene.control.TextField
 import javafx.scene.layout.AnchorPane
 import tornadofx.*
 
+/**
+ * Controller for the PreferencesView view.
+ */
 class PreferencesView : View(StringConstants.APPLICATION_NAME) {
 
     //TODO Limit inputs for text fields
-    //TODO Depending on how threading turns out, may need to pass in currentState
 
     //FXML Variables
     override val root: AnchorPane by fxml(StringConstants.PATH_PREFERENCES_FXML)
@@ -41,6 +43,13 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
         btnCancel.setOnMouseClicked {
             returnToMainView()
         }
+
+//        txtDurationThreshold.filterInput { change -> !change.isAdded || change.controlNewText.let(
+//            change.isInt() && it.toInt in 1..NumericalConstants.DAY_IN_SECONDS)
+//        }
+//        txtGasThreshold.filterInput {  }
+//        txtScanFrequency.filterInput {  }
+
     }
 
     private fun populateValues(){
@@ -52,6 +61,7 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
 
     private fun returnToMainView(){replaceWith<MainView>()}
 
+    //TODO Make below a FileIO thread and make associated components thread-safe
     private fun updatePreferences(){
         val prefs = PreferencesManager.getPreferences()
         //TODO - Have to validate that inputs are valid

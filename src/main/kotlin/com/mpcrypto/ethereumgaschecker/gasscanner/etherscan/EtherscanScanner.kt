@@ -1,11 +1,14 @@
 package com.mpcrypto.ethereumgaschecker.gasscanner.etherscan
 
-import GasPriceReturn
 import com.mpcrypto.ethereumgaschecker.constants.*
 import com.mpcrypto.ethereumgaschecker.gasscanner.GasScanner
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Class to interact with the Etherscan.io API and retrieve the current Ethereum gas price through use of the
+ * Retrofit and Gson libraries.
+ */
 class EtherscanScanner : GasScanner() {
 
     private lateinit var etherscanRequest: IEtherscanAPICalls

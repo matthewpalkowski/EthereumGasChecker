@@ -2,6 +2,11 @@ package com.mpcrypto.ethereumgaschecker.gasscanner
 
 import com.mpcrypto.ethereumgaschecker.fileio.PreferencesManager
 
+/**
+ * Singleton class that maintains a record gas prices and assigns time stamps for when they were recorded within the
+ * record. This record is used to evaluate whether the gas prices threshold and duration threshold targeted by the user
+ * via their preferences has been reached.
+ */
 object GasHistory {
 
     //TODO need to make this list thread-safe

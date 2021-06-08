@@ -1,10 +1,13 @@
 package com.mpcrypto.ethereumgaschecker.constants
 
+/**
+ * Class to serve as a global access point for string constants.
+ */
 class StringConstants {
     companion object{
         //API constants derived from the Etherscan.Etherscan API (https://etherscan.io/apis#proxy)
         const val ETHERSCAN_ACTION: String = "eth_gasPrice"
-        const val ETHERSCAN_BASE_URL: String = "https://api.etherscan.io/api"
+        const val ETHERSCAN_BASE_URL: String = "https://api.etherscan.io/"
         const val ETHERSCAN_GAS_MODULE: String = "proxy"
         const val ETHERSCAN_KEY_ACTION: String = "action"
         const val ETHERSCAN_KEY_MODULE: String = "module"

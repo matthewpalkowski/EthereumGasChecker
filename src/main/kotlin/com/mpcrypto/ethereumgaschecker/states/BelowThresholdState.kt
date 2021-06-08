@@ -2,7 +2,11 @@ package com.mpcrypto.ethereumgaschecker.states
 
 import com.mpcrypto.ethereumgaschecker.constants.StringConstants
 
-class BelowThresholdState : IGasThresholdState() {
+/**
+ * Extension of the GasThreshold state that is specific to the case when the gas price is currently below the thresholds
+ * specified in the preferences provided by the user.
+ */
+class BelowThresholdState : GasThresholdState() {
     override val notificationMessage: String = StringConstants.MESSAGE_BELOW_THRESHOLD
     override val thresholdInput: Boolean = false
 }

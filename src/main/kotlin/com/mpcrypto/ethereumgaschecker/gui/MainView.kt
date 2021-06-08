@@ -6,6 +6,9 @@ import javafx.scene.control.*
 import javafx.scene.layout.AnchorPane
 import tornadofx.*
 
+/**
+ * Controller for the MainView view.
+ */
 class MainView : View(StringConstants.APPLICATION_NAME) {
 
     //FXML Variables
