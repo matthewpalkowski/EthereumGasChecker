@@ -9,11 +9,12 @@ import java.io.*
  */
 object PreferencesManager {
 
-    private var currentPreferences : Preferences? = null
+    //FIXME need to make this thread-safe
+    private lateinit var currentPreferences : Preferences
 
-    fun getDurationThresholdMillis() : Long{
-        return currentPreferences!!.durationThreshold.toLong() * 1000
-    }
+    fun getDurationThresholdMillis() : Long{return currentPreferences!!.durationThreshold.toLong() * 1000}
+
+    fun getFrequencyMillis() : Long{return currentPreferences!!.scanFrequency.toLong() * 1000}
 
     fun getPreferences() : Preferences{
         if (currentPreferences == null) {

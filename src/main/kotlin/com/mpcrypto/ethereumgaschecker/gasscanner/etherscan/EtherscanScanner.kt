@@ -11,6 +11,8 @@ class EtherscanScanner : GasScanner() {
     private lateinit var etherscanRequest: IEtherscanAPICalls
     private lateinit var retrofitEtherscan: Retrofit
 
+    init{valueObservers = ArrayList()}
+
     override fun queryGas(){
         retrofitEtherscan = Retrofit.Builder()
             .baseUrl(StringConstants.ETHERSCAN_BASE_URL)

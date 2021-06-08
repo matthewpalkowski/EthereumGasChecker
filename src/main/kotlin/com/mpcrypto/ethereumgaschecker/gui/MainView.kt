@@ -1,9 +1,7 @@
 package com.mpcrypto.ethereumgaschecker.gui
 
 import com.mpcrypto.ethereumgaschecker.constants.StringConstants
-import com.mpcrypto.ethereumgaschecker.states.programstates.ActiveState
-import com.mpcrypto.ethereumgaschecker.states.programstates.IProgramState
-import com.mpcrypto.ethereumgaschecker.states.programstates.IdleState
+import com.mpcrypto.ethereumgaschecker.gasscanner.ScannerManager
 import javafx.scene.control.*
 import javafx.scene.layout.AnchorPane
 import tornadofx.*
@@ -17,12 +15,12 @@ class MainView : View(StringConstants.APPLICATION_NAME) {
     private lateinit var btnSetPreferences : Button
 
     //State Variables
-    private var activeState : IProgramState
-    private var currentState : IProgramState
-    private val idleState = IdleState()
+    private var scanningActive: Boolean = false
+
+    //Utilities
+    private val scannerManager = ScannerManager()
 
     init {
-        currentState = idleState
         for(child in root.children){
             when(child.id){
                 StringConstants.BUTTON_SCAN_ID ->btnGasScanning = child as Button
@@ -31,16 +29,20 @@ class MainView : View(StringConstants.APPLICATION_NAME) {
             }
         }
         btnGasScanning.setOnMouseClicked {
-            changeState()
-            currentState.setButtonText(btnGasScanning)
-            currentState.managePriceScanning()
+            toggleScanning()
+
         }
         btnSetPreferences.setOnMouseClicked {replaceWith<PreferencesView>()}
-        activeState = ActiveState()
     }
 
-    private fun changeState(){
-        currentState = if(currentState == idleState) activeState
-        else idleState
+    private fun toggleScanning(){
+        if(scanningActive){
+            btnGasScanning.text = StringConstants.BUTTON_SCAN_TEXT_STOP
+            scannerManager.stopScanning()
+        }
+        else{
+            btnGasScanning.text = StringConstants.BUTTON_SCAN_TEXT_START
+            scannerManager.startScanning()
+        }
     }
 }

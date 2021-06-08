@@ -1,4 +1,4 @@
-package com.mpcrypto.ethereumgaschecker.states.valuethresholdstates
+package com.mpcrypto.ethereumgaschecker.states
 
 import com.mpcrypto.ethereumgaschecker.constants.StringConstants
 

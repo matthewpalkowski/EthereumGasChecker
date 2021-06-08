@@ -44,5 +44,8 @@ class StringConstants {
 
         //Notification Strings
         const val ID_ICON = "App_Icon"
+
+        //Thread Names
+        const val SCANNING_THREAD = "GasScanningScope"
     }
 }

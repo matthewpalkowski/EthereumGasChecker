@@ -50,9 +50,7 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
         txtScanFrequency.text = currentPrefs.scanFrequency.toString()
     }
 
-    private fun returnToMainView(){
-        replaceWith<MainView>()
-    }
+    private fun returnToMainView(){replaceWith<MainView>()}
 
     private fun updatePreferences(){
         val prefs = PreferencesManager.getPreferences()
