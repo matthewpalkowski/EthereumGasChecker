@@ -8,9 +8,10 @@ class NumericalConstants {
         //Doubles
         const val MAIN_WIDTH = 315.0
         const val MAIN_HEIGHT = 285.0
+        const val MAX_GAS = 10000.0
 
         //Integers
         const val SECOND_TO_MILLIS = 1000
-        const val DAY_IN_SECONDS = 86400
+        const val MAX_DURATION_THRESHOLD = 86400 //currently 1 day in seconds
     }
 }

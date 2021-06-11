@@ -4,6 +4,7 @@ import com.mpcrypto.ethereumgaschecker.constants.*
 import com.mpcrypto.ethereumgaschecker.fileio.*
 import javafx.scene.control.Button
 import javafx.scene.control.TextField
+import javafx.scene.control.TextFormatter
 import javafx.scene.layout.AnchorPane
 import tornadofx.*
 
@@ -12,7 +13,7 @@ import tornadofx.*
  */
 class PreferencesView : View(StringConstants.APPLICATION_NAME) {
 
-    //TODO Limit inputs for text fields
+    //TODO Add warning messages for when user tries to enter invalid input
 
     //FXML Variables
     override val root: AnchorPane by fxml(StringConstants.PATH_PREFERENCES_FXML)
@@ -23,6 +24,7 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
     private lateinit var txtScanFrequency : TextField
 
     init {
+        //Cache references to UI components
         for(child in root.children){
             when(child.id){
                 StringConstants.BUTTON_ACCEPT_ID -> {btnAccept = child as Button}
@@ -33,8 +35,13 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
             }
         }
 
+        //Initialize state of control to buttons and text fields
         populateValues()
+        assignButtonListeners()
+        assignInputFilters()
+    }
 
+    private fun assignButtonListeners(){
         btnAccept.setOnMouseClicked {
             updatePreferences()
             returnToMainView()
@@ -43,13 +50,18 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
         btnCancel.setOnMouseClicked {
             returnToMainView()
         }
+    }
 
-//        txtDurationThreshold.filterInput { change -> !change.isAdded || change.controlNewText.let(
-//            change.isInt() && it.toInt in 1..NumericalConstants.DAY_IN_SECONDS)
-//        }
-//        txtGasThreshold.filterInput {  }
-//        txtScanFrequency.filterInput {  }
-
+    private fun assignInputFilters(){
+        txtDurationThreshold.filterInput { change -> validateInput(change)}
+        txtScanFrequency.filterInput {change -> validateInput(change)}
+        txtGasThreshold.filterInput { change ->
+            !change.isAdded ||
+                (change.controlNewText.let{it.isDouble() && it.toDouble() < NumericalConstants.MAX_GAS}) ||
+                (txtDurationThreshold.caretPosition == txtDurationThreshold.length-1
+                        && change.text.length == 1 && change.text!!.contentEquals("."))
+            //FIXME have to limit allowable # of chars after the decimal
+        }
     }
 
     private fun populateValues(){
@@ -69,5 +81,9 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
         prefs.gasThreshold = txtGasThreshold.text.toDouble()
         prefs.scanFrequency = txtScanFrequency.text.toInt()
         PreferencesManager.updatePreferences()
+    }
+
+    private fun validateInput(change : TextFormatter.Change) : Boolean{
+        return !change.isAdded || change.controlNewText.let{it.isInt() && it.toInt() in 1..NumericalConstants.MAX_DURATION_THRESHOLD}
     }
 }

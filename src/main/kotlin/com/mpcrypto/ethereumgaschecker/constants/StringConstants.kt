@@ -38,8 +38,9 @@ class StringConstants {
         //Filepaths
         const val PATH_ICON = "drawable/AppIcon.png"
         const val PATH_MAIN_FXML = "/layout/MainView.fxml"
-        const val PATH_PREFERENCES =  "values/UserPreferences.json"
+        const val PATH_PREFERENCES = "userpreferences.json"
         const val PATH_PREFERENCES_FXML = "/layout/PreferencesView.fxml"
+
 
         //Notification Messages
         const val MESSAGE_ABOVE_THRESHOLD = "Ethereum gas prices have risen above threshold"

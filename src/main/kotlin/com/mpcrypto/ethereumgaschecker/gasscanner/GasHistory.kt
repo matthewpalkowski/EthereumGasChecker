@@ -1,6 +1,9 @@
 package com.mpcrypto.ethereumgaschecker.gasscanner
 
-import com.mpcrypto.ethereumgaschecker.fileio.PreferencesManager
+import com.mpcrypto.ethereumgaschecker.constants.NumericalConstants
+import com.mpcrypto.ethereumgaschecker.fileio.*
+import java.util.*
+import java.util.concurrent.LinkedBlockingQueue
 
 /**
  * Singleton class that maintains a record gas prices and assigns time stamps for when they were recorded within the
@@ -9,11 +12,12 @@ import com.mpcrypto.ethereumgaschecker.fileio.PreferencesManager
  */
 object GasHistory {
 
-    //TODO need to make this list thread-safe
-    private val valuesList : MutableList<GasSnapshot> = ArrayList()
+    private val valuesList : Queue<GasSnapshot> = LinkedBlockingQueue(NumericalConstants.MAX_DURATION_THRESHOLD)
 
-    //TODO need enforce a max size of values list otherwise there will be memory leak
-    fun addSnapshot(snapshot: GasSnapshot){valuesList.add(snapshot)}
+    fun addSnapshot(snapshot: GasSnapshot){
+        if(valuesList.size == NumericalConstants.MAX_DURATION_THRESHOLD) valuesList.poll()
+        valuesList.add(snapshot)
+    }
 
     fun thresholdsReached(above : Boolean) : Boolean{
 
@@ -21,17 +25,23 @@ object GasHistory {
         var valid = true
         var totalDuration : Long = 0
         var comparisonValue : Int
+        val currentHistory = valuesList.toTypedArray()
 
-        for(i in valuesList.size-1..0){
-            totalDuration = valuesList[valuesList.lastIndex].timeStamp - valuesList[i].timeStamp
-            comparisonValue = valuesList[i].gasValue.compareTo(PreferencesManager.getPreferences().gasThreshold)
+        for(i in currentHistory.size-1..0){
+            totalDuration = currentHistory[currentHistory.lastIndex].timeStamp - currentHistory[i].timeStamp
+            comparisonValue = currentHistory[i].gasValue.compareTo(PreferencesManager.getPreferences().gasThreshold)
+
+            //Value found on opposite side of threshold - exit
             if(comparisonValue != referenceComparator && comparisonValue != 0){
                 valid = false
                 break
             }
+
+            //Exceeded threshold for duration
             if(totalDuration > PreferencesManager.getDurationThresholdMillis()) break
         }
 
+        //Check case if all values in list were timestamped less than durationThreshold
         if(totalDuration > PreferencesManager.getDurationThresholdMillis()) valid = false
 
         return valid

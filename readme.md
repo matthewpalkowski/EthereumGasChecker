@@ -22,4 +22,5 @@ a copy of Java Runtime Environment, use download link above.
 If this was helpful or you want to support this project, please feel free to throw a donation my way.
 
 Paypal: https://paypal.me/MatthewPalkowski?locale.x=en_US
+
 Ethereum wallet: 0x9F657ed61D9C733BAe475f319d89616cc6ba0f66
