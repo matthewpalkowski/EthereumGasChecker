@@ -6,12 +6,15 @@ package com.mpcrypto.ethereumgaschecker.constants
 class StringConstants {
     companion object{
         //API constants derived from the Etherscan.Etherscan API (https://etherscan.io/apis#proxy)
-        const val ETHERSCAN_ACTION: String = "eth_gasPrice"
+        const val ETHERSCAN_ACTION_PRICE: String = "eth_gasPrice"
+        const val ETHERSCAN_ACTION_ORACLE: String = "gasoracle"
         const val ETHERSCAN_BASE_URL: String = "https://api.etherscan.io/"
-        const val ETHERSCAN_GAS_MODULE: String = "proxy"
+        const val ETHERSCAN_GAS_MODULE_PRICE: String = "proxy"
+        const val ETHERSCAN_GAS_MODULE_ORACLE: String = "gastracker"
         const val ETHERSCAN_KEY_ACTION: String = "action"
         const val ETHERSCAN_KEY_MODULE: String = "module"
         const val ETHERSCAN_KEY_APIKEY: String = "apikey"
+
 
         //GUI Display Text
         const val APPLICATION_NAME = "Ethereum Gas Checker"

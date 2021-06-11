@@ -15,14 +15,13 @@ object PreferencesManager {
     private lateinit var currentPreferences : Preferences
     private val file = File(StringConstants.PATH_PREFERENCES)
 
+    init{readPreferencesFromFile()}
+
     fun getDurationThresholdMillis() : Long{return currentPreferences.durationThreshold.toLong() * NumericalConstants.SECOND_TO_MILLIS}
 
     fun getFrequencyMillis() : Long{return currentPreferences.scanFrequency.toLong() * NumericalConstants.SECOND_TO_MILLIS}
 
-    fun getPreferences() : Preferences{
-        if (!::currentPreferences.isInitialized) readPreferencesFromFile()
-        return currentPreferences
-    }
+    fun getPreferences() : Preferences{return currentPreferences}
 
     /*FIXME - Manage file exceptions - if file cannot be found or is corrupted somehow should attempt to recreate the
        file with default values and show message warning user*/

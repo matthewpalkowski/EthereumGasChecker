@@ -24,26 +24,28 @@ class EtherscanScanner : GasScanner() {
 
         etherscanRequest = retrofitEtherscan.create(IEtherscanAPICalls::class.java)
 
-        etherscanRequest.getGasPrice(
-            StringConstants.ETHERSCAN_GAS_MODULE,
-            StringConstants.ETHERSCAN_ACTION,
+        etherscanRequest.getGasOracle(
+            StringConstants.ETHERSCAN_GAS_MODULE_ORACLE,
+            StringConstants.ETHERSCAN_ACTION_ORACLE,
             ApiKeys.ETHERSCAN_API_KEY)
-            .enqueue(object : Callback<GasPriceReturn>{
-                override fun onResponse(call: Call<GasPriceReturn>, response: Response<GasPriceReturn>) {
+            .enqueue(object : Callback<GasOracleReturn>{
+                override fun onResponse(call: Call<GasOracleReturn>, response: Response<GasOracleReturn>) {
                     //FIXME probably should check response codes instead of just checking for a null body
                     if(response.body() == null) {
                         print(response.code()) //TODO FIGURE OUT WARNING MECHANISMS
                     }
                     else {
                         //sets value to current GasPrice and notifies observers of new value
-                        value = response.body()!!.result
+                        value = response.body()!!.result.SafeGasPrice
+                        println(value)
                         notifyObservers()
                     }
                 }
 
-                override fun onFailure(call: Call<GasPriceReturn>, t: Throwable) {
+                override fun onFailure(call: Call<GasOracleReturn>, t: Throwable) {
                     //TODO Catch missing internet connection and put warning message about internet connection
                     //TODO if not mia internet, put error message for unhandled exception
+                    throw t
                 }
             })
     }

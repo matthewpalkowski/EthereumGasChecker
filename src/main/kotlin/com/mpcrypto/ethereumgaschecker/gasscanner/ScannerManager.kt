@@ -22,13 +22,16 @@ class ScannerManager() : IValueObserver {
     private var currentGasState : GasThresholdState = belowState
     private var scanningThread : Job? = null
 
+    private var active = false
+
     private fun changeState(){
         currentGasState = if(currentGasState == aboveState) belowState
         else aboveState
     }
 
-    fun startScanning() {
-        scanner.attachObserver(this)
+    fun isActive(): Boolean{return active}
+
+    private fun launchScan(){
         scanningThread = threadScope.launch {
             while(true){
                 scanner.queryGas()
@@ -37,16 +40,51 @@ class ScannerManager() : IValueObserver {
         }
     }
 
+    fun startScanning(){
+        scanner.attachObserver(this)
+        launchScan()
+    }
+
+    fun startScanning(valueObserver : IValueObserver){
+        scanner.attachObserver(valueObserver)
+        scanner.attachObserver(this)
+        launchScan()
+    }
+
+    fun startScanning(valueObservers: MutableList<IValueObserver>?) {
+        active = true
+        valueObservers!!.add(this)
+        for (observer in valueObservers) scanner.attachObserver(observer)
+        launchScan()
+    }
+
     fun stopScanning(){
         scanner.detachObserver(this)
+        teardownScan()
+    }
+
+    fun stopScanning(valueObserver: IValueObserver){
+        scanner.detachObserver(valueObserver)
+        scanner.detachObserver(this)
+        teardownScan()
+    }
+
+    fun stopScanning(valueObservers: MutableList<IValueObserver>){
+        valueObservers.add(this)
+        for (observer in valueObservers) scanner.detachObserver(observer)
+        teardownScan()
+    }
+
+    private fun teardownScan(){
+        active = false
         scanningThread!!.cancel()
     }
 
-    override fun update(value: Double) {
+    override fun update(value: Int) {
         GasHistory.addSnapshot(GasSnapshot(value, System.currentTimeMillis()))
         if(currentGasState.validateSnapshot()){
-            currentGasState.notifyUser()
             changeState()
+            currentGasState.notifyUser()
         }
     }
 }

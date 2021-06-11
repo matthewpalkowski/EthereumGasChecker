@@ -5,7 +5,7 @@ package com.mpcrypto.ethereumgaschecker.observerutils
  */
 open class ValueObservable {
     protected lateinit var valueObservers : MutableList<IValueObserver>
-    protected var value : Double = -1.0
+    protected var value : Int = -1 //FIXME Change to generalized implementation for any numerical value
 
     fun attachObserver(newValueObserver: IValueObserver){valueObservers.add(newValueObserver)}
 

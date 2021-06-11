@@ -7,6 +7,6 @@ import com.mpcrypto.ethereumgaschecker.constants.StringConstants
  * specified in the preferences provided by the user.
  */
 class BelowThresholdState : GasThresholdState() {
-    override val notificationMessage: String = StringConstants.MESSAGE_BELOW_THRESHOLD
+    override val notificationMessage: String = StringConstants.MESSAGE_ABOVE_THRESHOLD
     override val thresholdInput: Boolean = false
 }

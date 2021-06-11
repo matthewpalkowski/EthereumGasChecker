@@ -1,1 +1,1 @@
-{"durationThreshold":1,"gasThreshold":50.0,"scanFrequency":30}
+{"durationThreshold":30,"gasThreshold":25.0,"scanFrequency":5}

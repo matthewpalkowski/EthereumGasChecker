@@ -15,6 +15,7 @@ abstract class GasThresholdState {
     abstract val notificationMessage : String
     abstract val thresholdInput : Boolean
 
+    //FIXME Functionality should be moved into an abstracted message broker that is triggered by the ScannerManager
     fun notifyUser(){
         val iconURL = this::class.java.classLoader.getResource(StringConstants.PATH_ICON)
         val icon = Icon.create(iconURL, StringConstants.ID_ICON)
