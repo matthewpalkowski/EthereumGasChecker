@@ -48,7 +48,5 @@ class MainView : View(StringConstants.APPLICATION_NAME), IValueObserver {
         }
     }
 
-    override fun update(value: Int) {
-        Platform.runLater {lblCurrentPrice.text = value.toString()}
-    }
+    override fun update(value: Int) {Platform.runLater {lblCurrentPrice.text = value.toString()}}
 }

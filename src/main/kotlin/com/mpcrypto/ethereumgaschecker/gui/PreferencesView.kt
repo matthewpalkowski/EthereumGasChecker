@@ -56,11 +56,7 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
         txtDurationThreshold.filterInput { change -> validateInput(change)}
         txtScanFrequency.filterInput {change -> validateInput(change)}
         txtGasThreshold.filterInput { change ->
-            !change.isAdded ||
-                (change.controlNewText.let{it.isDouble() && it.toDouble() < NumericalConstants.MAX_GAS}) ||
-                (txtDurationThreshold.caretPosition == txtDurationThreshold.length-1
-                        && change.text.length == 1 && change.text!!.contentEquals("."))
-            //FIXME have to limit allowable # of chars after the decimal
+            !change.isAdded || (change.controlNewText.let{it.isInt() && it.toInt() < NumericalConstants.MAX_GAS})
         }
     }
 
@@ -76,9 +72,8 @@ class PreferencesView : View(StringConstants.APPLICATION_NAME) {
     //TODO Make below a FileIO thread and make associated components thread-safe
     private fun updatePreferences(){
         val prefs = PreferencesManager.getPreferences()
-        //TODO - Have to validate that inputs are valid
         prefs.durationThreshold = txtDurationThreshold.text.toInt()
-        prefs.gasThreshold = txtGasThreshold.text.toDouble()
+        prefs.gasThreshold = txtGasThreshold.text.toInt()
         prefs.scanFrequency = txtScanFrequency.text.toInt()
         PreferencesManager.updatePreferences()
     }

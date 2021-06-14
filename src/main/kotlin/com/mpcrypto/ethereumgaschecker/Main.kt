@@ -7,8 +7,6 @@ import tornadofx.App
 
 //FIXME - Consider abstract factory patterns to fix reduce dependencies
 //FIXME - Add custom app icon for the task bar and in the system tray for notifications
-/*FIXME - Allowing for a full day for duration or scanning causes timestamps to cross multiple days which cause many issues
-            with timestamps. Have to reduce this duration and explain maximums to user.*/
 
 /*TODO
  *  -Address the issue of distributing an API key

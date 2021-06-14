@@ -27,23 +27,25 @@ object GasHistory {
         var comparisonValue : Int
         val currentHistory = valuesList.toTypedArray()
 
-        for(i in currentHistory.size-1..0){
-            totalDuration = currentHistory[currentHistory.lastIndex].timeStamp - currentHistory[i].timeStamp
-            comparisonValue = currentHistory[i].gasValue.compareTo(PreferencesManager.getPreferences().gasThreshold)
+        if(valuesList.size > 0) {
+            for (i in currentHistory.size - 1..0) {
+                totalDuration = currentHistory[currentHistory.lastIndex].timeStamp - currentHistory[i].timeStamp
+                comparisonValue = currentHistory[i].gasValue.compareTo(PreferencesManager.getPreferences().gasThreshold)
 
-            //Value found on opposite side of threshold - exit
-            if(comparisonValue != referenceComparator && comparisonValue != 0){
-                valid = false
-                break
+                //Value found on opposite side of threshold - exit
+                if (comparisonValue != referenceComparator && comparisonValue != 0) {
+                    valid = false
+                    break
+                }
+
+                //Exceeded threshold for duration
+                if (totalDuration > PreferencesManager.getDurationThresholdMillis()) break
             }
 
-            //Exceeded threshold for duration
-            if(totalDuration > PreferencesManager.getDurationThresholdMillis()) break
+            //Check case if all values in list were timestamped less than durationThreshold
+            if (totalDuration < PreferencesManager.getDurationThresholdMillis()) valid = false
         }
-
-        //Check case if all values in list were timestamped less than durationThreshold
-        if(totalDuration > PreferencesManager.getDurationThresholdMillis()) valid = false
-
+        else valid = false
         return valid
     }
 }

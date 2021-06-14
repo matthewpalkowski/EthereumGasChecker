@@ -1,8 +1,7 @@
 package com.mpcrypto.ethereumgaschecker.states
 
-import com.mpcrypto.ethereumgaschecker.constants.StringConstants
 import com.mpcrypto.ethereumgaschecker.gasscanner.GasHistory
-import fr.jcgay.notification.*
+import com.mpcrypto.ethereumgaschecker.notifications.NotificationManager
 
 /**
  * Abstract class that builds the core functionality of the State pattern utilized to send notifications to the user
@@ -16,28 +15,7 @@ abstract class GasThresholdState {
     abstract val thresholdInput : Boolean
 
     //FIXME Functionality should be moved into an abstracted message broker that is triggered by the ScannerManager
-    fun notifyUser(){
-        val iconURL = this::class.java.classLoader.getResource(StringConstants.PATH_ICON)
-        val icon = Icon.create(iconURL, StringConstants.ID_ICON)
-
-        val application = Application.builder(
-            StringConstants.APPLICATION_NAME,
-            StringConstants.APPLICATION_NAME,
-            icon)
-            .build()
-
-        val notifier : Notifier = SendNotification()
-            .setApplication(application)
-            .initNotifier()
-
-        val notification = Notification.builder()
-            .title(StringConstants.APPLICATION_NAME)
-            .message(notificationMessage)
-            .icon(icon)
-            .build()
-
-        notifier.send(notification)
-    }
+    fun notifyUser(){NotificationManager.distributeNotifications(notificationMessage)}
 
     fun validateSnapshot(): Boolean {return GasHistory.thresholdsReached(thresholdInput)}
 }

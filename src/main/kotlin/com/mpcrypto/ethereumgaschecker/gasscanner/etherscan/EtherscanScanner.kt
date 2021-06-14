@@ -37,7 +37,6 @@ class EtherscanScanner : GasScanner() {
                     else {
                         //sets value to current GasPrice and notifies observers of new value
                         value = response.body()!!.result.SafeGasPrice
-                        println(value)
                         notifyObservers()
                     }
                 }

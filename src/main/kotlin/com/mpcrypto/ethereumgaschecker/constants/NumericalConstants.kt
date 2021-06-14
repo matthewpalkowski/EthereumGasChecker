@@ -8,7 +8,7 @@ class NumericalConstants {
         //Doubles
         const val MAIN_WIDTH = 315.0
         const val MAIN_HEIGHT = 285.0
-        const val MAX_GAS = 10000.0
+        const val MAX_GAS = 10000
 
         //Integers
         const val SECOND_TO_MILLIS = 1000

@@ -5,5 +5,5 @@ package com.mpcrypto.ethereumgaschecker.fileio
  */
 data class Preferences(
     var durationThreshold : Int,
-    var gasThreshold : Double,
+    var gasThreshold : Int,
     var scanFrequency : Int)
