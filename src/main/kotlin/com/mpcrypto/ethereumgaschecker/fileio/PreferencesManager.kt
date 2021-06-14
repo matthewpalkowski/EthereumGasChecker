@@ -1,8 +1,7 @@
 package com.mpcrypto.ethereumgaschecker.fileio
 
 import com.google.gson.Gson
-import com.mpcrypto.ethereumgaschecker.constants.NumericalConstants
-import com.mpcrypto.ethereumgaschecker.constants.StringConstants
+import com.mpcrypto.ethereumgaschecker.constants.*
 import java.io.*
 
 /**

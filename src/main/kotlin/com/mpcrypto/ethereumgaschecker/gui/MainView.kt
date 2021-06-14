@@ -39,12 +39,12 @@ class MainView : View(StringConstants.APPLICATION_NAME), IValueObserver {
 
     private fun toggleScanning(){
         if(scannerManager.isActive()){
-            btnGasScanning.text = StringConstants.BUTTON_SCAN_TEXT_START
             scannerManager.stopScanning(this)
+            btnGasScanning.text = StringConstants.BUTTON_SCAN_TEXT_START
         }
         else{
-            btnGasScanning.text = StringConstants.BUTTON_SCAN_TEXT_STOP
             scannerManager.startScanning(this)
+            btnGasScanning.text = StringConstants.BUTTON_SCAN_TEXT_STOP
         }
     }
 

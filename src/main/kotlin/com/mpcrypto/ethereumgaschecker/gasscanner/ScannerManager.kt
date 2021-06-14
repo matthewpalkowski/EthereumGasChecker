@@ -40,6 +40,7 @@ class ScannerManager() : IValueObserver {
     fun isActive(): Boolean{return active}
 
     private fun launchScan(){
+        this.active = true
         scanningThread = threadScope.launch {
             while(true){
                 scanner.queryGas()
