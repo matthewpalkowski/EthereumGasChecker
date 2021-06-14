@@ -16,6 +16,10 @@ class EtherscanScanner : GasScanner() {
 
     init{valueObservers = ArrayList()}
 
+    /**
+     * Queries the GasOracle API endpoint to retrieve the current gas prices. Upon successful return, observers for this
+     * value are notified.
+     */
     override fun queryGas(){
         retrofitEtherscan = Retrofit.Builder()
             .baseUrl(StringConstants.ETHERSCAN_BASE_URL)

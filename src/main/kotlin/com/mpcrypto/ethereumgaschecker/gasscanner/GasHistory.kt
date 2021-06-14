@@ -14,11 +14,26 @@ object GasHistory {
 
     private val valuesList : Queue<GasSnapshot> = LinkedBlockingQueue(NumericalConstants.MAX_DURATION_THRESHOLD)
 
+    /**
+     * Adds a GasSnapshot to values list and ensures that list. If list is longer that the maximum allowable length,
+     * oldest snapshot is removed to make room for the most recent snapshot.
+     * @param snapshot - GasSnapshot to be added to valuesList.
+     */
     fun addSnapshot(snapshot: GasSnapshot){
         if(valuesList.size == NumericalConstants.MAX_DURATION_THRESHOLD) valuesList.poll()
         valuesList.add(snapshot)
     }
 
+    /**
+     * Performs a linear scan of value list to validate whether the user defined thresholds for value and duration have
+     * been reached.
+     * @param above - Boolean value designating the whether the history should be evaluated in manner as though the
+     * current gas price is above the defined threshold, or whether it is below the defined threshold. True signifies
+     * that history should be evaluated as though it is currently above the gas threshold value and false signifies that
+     * the history will be evaluated as though it is currently below the gas threshold value.
+     * @return true if gas value are on the opposite side of the gas threshold value as defined by the above parameter,
+     * for the duration specified by the durationThreshold, otherwise false.
+     */
     fun thresholdsReached(above : Boolean) : Boolean{
 
         val referenceComparator = if(above) -1 else 1

@@ -48,5 +48,10 @@ class MainView : View(StringConstants.APPLICATION_NAME), IValueObserver {
         }
     }
 
+    /**
+     * Update function for the Observer Patterned used in monitoring of gas value. Triggered when new value
+     * received.
+     * @param value - Int broadcast by the IValueObservable being observed.
+     */
     override fun update(value: Int) {Platform.runLater {lblCurrentPrice.text = value.toString()}}
 }

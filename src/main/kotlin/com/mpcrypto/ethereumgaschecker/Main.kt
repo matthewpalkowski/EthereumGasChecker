@@ -22,6 +22,9 @@ import tornadofx.App
  * @author Matthew Palkowski
  */
 class  Main: App(MainView::class){
+    /**
+     * Function to start the torandofx gui.
+     */
     override fun start(stage: Stage) {
         stage.isResizable = false
         stage.height= NumericalConstants.MAIN_HEIGHT

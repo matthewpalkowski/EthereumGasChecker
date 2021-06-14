@@ -16,10 +16,22 @@ object PreferencesManager {
 
     init{readPreferencesFromFile()}
 
+    /**
+     * Returns the current Duration Threshold as defined by the preferences file, converted to milliseconds.
+     * @return Duration Threshold as defined by the preferences file, converted to milliseconds.
+     */
     fun getDurationThresholdMillis() : Long{return currentPreferences.durationThreshold.toLong() * NumericalConstants.SECOND_TO_MILLIS}
 
+    /**
+     * Returns the current Scan Frequency as defined by the preferences file, converted to milliseconds.
+     * @return Scan Frequency as defined by the preferences file, converted to milliseconds.
+     */
     fun getFrequencyMillis() : Long{return currentPreferences.scanFrequency.toLong() * NumericalConstants.SECOND_TO_MILLIS}
 
+    /**
+     * Returns the current preferences.
+     * @return Preferences object populated with values representing the current preferences set by the user.
+     */
     fun getPreferences() : Preferences{return currentPreferences}
 
     /*FIXME - Manage file exceptions - if file cannot be found or is corrupted somehow should attempt to recreate the
@@ -30,8 +42,11 @@ object PreferencesManager {
         currentPreferences = gson.fromJson(fileReader, Preferences::class.java)
     }
 
-    //FIXME - Manage potential IO exceptions
+    /**
+     * Writes the current preferences to local preferences.json file.
+     */
     fun updatePreferences(){
+        //FIXME - Manage potential IO exceptions
         val gson = Gson()
         val writer = FileWriter(file)
         val bufferedWriter = BufferedWriter(writer)
