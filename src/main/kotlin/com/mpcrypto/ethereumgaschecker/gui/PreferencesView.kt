@@ -14,6 +14,7 @@ import tornadofx.*
 class PreferencesView : View(StringConstants.APPLICATION_NAME) {
 
     //TODO Add warning messages for when user tries to enter invalid input
+    //TODO max scan frequency s/b 10 seconds for etherscan since it only updates every 10 seconds
 
     //FXML Variables
     override val root: AnchorPane by fxml(StringConstants.PATH_PREFERENCES_FXML)

@@ -42,8 +42,8 @@ object GasHistory {
         var comparisonValue : Int
         val currentHistory = valuesList.toTypedArray()
 
-        if(valuesList.size > 0) {
-            for (i in currentHistory.size - 1..0) {
+        if(currentHistory.isNotEmpty()) {
+            for (i in currentHistory.size - 1 downTo 0) {
                 totalDuration = currentHistory[currentHistory.lastIndex].timeStamp - currentHistory[i].timeStamp
                 comparisonValue = currentHistory[i].gasValue.compareTo(PreferencesManager.getPreferences().gasThreshold)
 
