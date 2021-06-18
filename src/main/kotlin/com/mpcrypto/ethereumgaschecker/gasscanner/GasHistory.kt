@@ -36,6 +36,9 @@ object GasHistory {
      */
     fun thresholdsReached(above : Boolean) : Boolean{
 
+        /*FIXME - Repeat notifications will be sent if the value remains at the Gas threshold for a long period of time.
+        *  likely should remove the equal to case or have the equal to only trigger the above state*/
+
         val referenceComparator = if(above) -1 else 1
         var valid = true
         var totalDuration : Long = 0
