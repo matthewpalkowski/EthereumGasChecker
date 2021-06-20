@@ -29,7 +29,6 @@ class ScannerManager() : IValueObserver {
     private var active = false
 
     private fun changeState(){
-        println("State changed")
         currentGasState = if(currentGasState == aboveState) belowState
         else aboveState
     }

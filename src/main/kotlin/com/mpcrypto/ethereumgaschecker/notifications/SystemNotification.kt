@@ -14,6 +14,9 @@ class SystemNotification : INotifier {
      * @param message - String defining the message body for the notification.
      */
     override fun sendNotification(message: String) {
+
+        //FIXME - Icon not appearing in tray message body icon
+
         val iconURL = this::class.java.classLoader.getResource(StringConstants.PATH_ICON)
         val icon = Icon.create(iconURL, StringConstants.ID_ICON)
 
