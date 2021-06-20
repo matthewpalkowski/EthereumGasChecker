@@ -9,7 +9,6 @@ import kotlin.system.exitProcess
 //FIXME - Consider abstract factory patterns to fix reduce dependencies
 
 /*TODO
- *  -Scanning thread not cleaning up properly on exit of application
  *  -Address the issue of distributing an API key
  *      -Have to have multiple keys from Etherscan//Get a pro-license
  *      -App has to query my own server that then queries Etherscan in order to shield my api key
