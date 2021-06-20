@@ -4,6 +4,7 @@ import com.mpcrypto.ethereumgaschecker.constants.NumericalConstants
 import com.mpcrypto.ethereumgaschecker.gui.MainView
 import javafx.stage.Stage
 import tornadofx.App
+import kotlin.system.exitProcess
 
 //FIXME - Consider abstract factory patterns to fix reduce dependencies
 
@@ -27,5 +28,10 @@ class  Main: App(MainView::class){
         stage.height= NumericalConstants.MAIN_HEIGHT
         stage.width = NumericalConstants.MAIN_WIDTH
         super.start(stage)
+    }
+
+    override fun stop() {
+        super.stop()
+        exitProcess(0)
     }
 }
